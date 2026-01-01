@@ -6,7 +6,7 @@ Backend Go sederhana Data Inventaris barang meggunakan JWT , CRUD & logs.
 
 ### 1. Database Setup
 1. Buka SQL.
-2. Jalankan script di `app/database.sql` 
+2. Jalankan script di `app/sql/database.sql` 
 
 ### 2. Environment Variables
 Buat`.env` dengan ketentuan:
