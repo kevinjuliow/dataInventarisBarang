@@ -77,7 +77,7 @@ func (service *UserServiceImpl) Login(ctx context.Context, request dtos.UserLogi
 
 	jwtSecret := []byte(os.Getenv("JWT_SECRET"))
 	if len(jwtSecret) == 0 {
-		panic(errors.New("JWT_SECRET is not in .env"))
+		panic(errors.New("error fetching data in JWT_SECRET"))
 	}
 
 	claims := jwt.MapClaims{

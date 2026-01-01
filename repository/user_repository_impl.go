@@ -17,7 +17,7 @@ func NewUserRepositoryImpl() UserRepository {
 }
 
 func (repository *UserRepositoryImpl) Save(ctx context.Context, tx *sql.Tx, user domain.User) domain.User {
-	SQL := "INSERT INTO users(username, password, name) VALUES (?, ?, ?)"
+	SQL := "INSERT INTO users(email, password, name) VALUES (?, ?, ?)"
 	result, err := tx.ExecContext(ctx, SQL, user.Email, user.Password, user.Name)
 	helper.PanicIfError(err)
 
@@ -28,7 +28,7 @@ func (repository *UserRepositoryImpl) Save(ctx context.Context, tx *sql.Tx, user
 	return user
 }
 func (repository *UserRepositoryImpl) FindAll(ctx context.Context, tx *sql.Tx) []domain.User {
-	SQL := "SELECT id, username, name FROM users"
+	SQL := "SELECT id, email, name FROM users"
 	rows, err := tx.QueryContext(ctx, SQL)
 	helper.PanicIfError(err)
 	defer rows.Close()
@@ -44,7 +44,7 @@ func (repository *UserRepositoryImpl) FindAll(ctx context.Context, tx *sql.Tx) [
 }
 
 func (repository *UserRepositoryImpl) FindByEmail(ctx context.Context, tx *sql.Tx, email string) (domain.User, error) {
-	SQL := "SELECT id, username, password, name FROM users WHERE username = ?"
+	SQL := "SELECT id, email, password, name FROM users WHERE email = ?"
 	rows, err := tx.QueryContext(ctx, SQL, email)
 	helper.PanicIfError(err)
 	defer rows.Close()

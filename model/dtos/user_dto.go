@@ -8,7 +8,7 @@ type UserRegisterRequest struct {
 
 type UserLoginRequest struct {
 	Email    string `validate:"required,email,max=100" json:"email"`
-	Password string `validate:"required,min=8,max=100" json:"password"`
+	Password string `validate:"required,min=4,max=100" json:"password"`
 }
 
 type UserResponse struct {

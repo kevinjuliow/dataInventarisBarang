@@ -19,7 +19,7 @@ func NewDb() *sql.DB {
 	LoadEnv()
 	dbName := os.Getenv("DB_USERNAME")
 	dbpassword := os.Getenv("DB_PASSWORD")
-	dbUrl := dbName + ":" + dbpassword + "@tcp(localhost:3306)/data_inventaris"
+	dbUrl := dbName + ":" + dbpassword + "@tcp(localhost:3306)/data_inventaris?parseTime=true"
 	db, err := sql.Open("mysql", dbUrl)
 	helper.PanicIfError(err)
 
